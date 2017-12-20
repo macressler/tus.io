@@ -1,0 +1,226 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    
+    
+
+    <title>How tus may help to save lives | tus</title>
+
+    <link rel="shortcut icon" href="/assets/img/favicon.png">
+    <link rel="apple-touch-icon" href="/assets/img/favicon.png">
+    <link rel="stylesheet" href="/assets/build/app.05d2f196ce928852a41f.css"  media="screen" charset="utf-8">
+    <link type="application/atom+xml" rel="alternate" href="https://tus.io/blog.atom" />
+
+    <!-- Twitter follow button script -->
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+
+    <script src="//use.typekit.net/zgo3uyj.js"></script>
+    <script>try{Typekit.load();}catch(e){}</script>
+  </head>
+
+  <body>
+    
+    
+    
+
+    <a href="https://github.com/tus">
+      <img class="ribbon" src="https://camo.githubusercontent.com/652c5b9acfaddf3a9c326fa6bde407b87f7be0f4/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6f72616e67655f6666373630302e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png"></a>
+    </a>
+
+    <div class="wrapper">
+      <div class="header">
+        <div class="container">
+          <div class="row">
+            <div class="three columns logo-container">
+              <h3 class="logo">
+                <a href="/">
+                  
+                    <img src="/assets/img/favicon.png" class="shield" alt="tus.io" />
+                  
+
+                  <img src="/assets/img/tus7.png" alt="tus.io" />
+                </a>
+              </h3>
+            </div>
+
+            <div class="nine columns nav-container">
+              <a href="#" class="toggler">
+                <span class="hamburger">&#8801;</span>
+                <span class="cross">&#10005;</span>
+              </a>
+
+              <ul class="nav">
+                
+                  
+                  
+                  
+                  
+                  <li class="active">
+                    <a data-pageUrlHtml="/blog/2017/05/19/how-tus-may-help-to-save-lives.html.html" href="/">Home</a>
+                  </li>
+                
+                  
+                  
+                  
+                  
+                  <li class="">
+                    <a data-pageUrlHtml="/blog/2017/05/19/how-tus-may-help-to-save-lives.html.html" href="/about.html">About</a>
+                  </li>
+                
+                  
+                  
+                  
+                  
+                  <li class="active">
+                    <a data-pageUrlHtml="/blog/2017/05/19/how-tus-may-help-to-save-lives.html.html" href="/blog.html">Blog</a>
+                  </li>
+                
+                  
+                  
+                  
+                  
+                  <li class="">
+                    <a data-pageUrlHtml="/blog/2017/05/19/how-tus-may-help-to-save-lives.html.html" href="/demo.html">Demo</a>
+                  </li>
+                
+                  
+                  
+                  
+                  
+                  <li class="">
+                    <a data-pageUrlHtml="/blog/2017/05/19/how-tus-may-help-to-save-lives.html.html" href="/protocols/resumable-upload.html">Protocol</a>
+                  </li>
+                
+                  
+                  
+                  
+                  
+                  <li class="">
+                    <a data-pageUrlHtml="/blog/2017/05/19/how-tus-may-help-to-save-lives.html.html" href="/implementations.html">Implementations</a>
+                  </li>
+                
+              </ul>
+
+              <div class="u-cf"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        
+          <div class="container">
+        
+
+          
+
+<div class="post">
+  <h1 class="post-title">
+    How tus may help to save lives
+  </h1>
+
+  <div class="post-info">
+    Published on <span class="date">May 19, 2017</span> by
+    
+      <a class="author" href="https://transloadit.com/about/#a-j">
+        A.J. van Loon
+      </a>
+    
+  </div>
+
+  <div class="post-content">
+    <p>Yes, oddly enough, this seems to be the case! A while ago, we noticed something really interesting on tus.io, our open protocol for resumable uploads: a <a href="/implementations.html#comment-2903776646">comment</a> from <a href="https://twitter.com/Orajo">Jaroslaw Wasilewski</a> mentioned that tus was being used to support firefighting rescue operations. Now that is exciting news!</p>
+
+<p>While we did set out to make the world a slightly better place by making uploading more reliable for everyone, this is certainly not what we had in mind. We were very interested to learn more about this, so we invited Jaroslaw to sit down with us for a virtual cup of coffee and asked him to tell us a little more about the system they have developed – and how they are using tus for it.</p>
+
+<!--more-->
+
+<div class="kodak-container kodak-dropshadow">
+<img src="/assets/img/fireman.jpg" alt="Firefighters" style="width: 100%;" />
+</div>
+
+<p><strong>Could you tell us something about the work you do and the kind of service your company provides to fire fighters?</strong></p>
+
+<blockquote>
+  <p>Certainly! My name is Jaroslaw Wasilewski and I work as a developer for an IT company called <a href="http://Bit-sa.pl">BIT S.A.</a>, which is located in Bialystok, Poland. We primarily write dedicated software for government and local administration. Our fire brigades were already using a system for handling requests and directing them to the appropriate, nearest units. There was, however, nothing in place that could support communication during rescue operations, either between units or between the command center and the firefighters in the field, beyond the typical radio communication. So, we developed a set of mobile and web-based applications that allows for messages, documents, data mapping, pictures and videos from the area of action to be sent to the command post and vice versa. It also makes it possible to closely monitor both the location and status of vehicles and firefighters, and it can be used to report the state of the victims. Lastly, it even provides logistic services for long-term rescue operations, such as forest fires or other natural disasters.  The system is currently being tested by firefighters in the <a href="https://en.wikipedia.org/wiki/Podlaskie_Voivodeship">province of Podlasie</a>.</p>
+</blockquote>
+
+<p><strong>How exactly are you using tus? Could you tell me something about the way it is used in firefighting operations?</strong></p>
+
+<blockquote>
+  <p>Tus is being used to send photos, videos and  other documents from mobile application to the back-end as attachments to the exchanged messages. This allows units in the field to immediately give the command center of any rescue operation a full and clear picture of the situation at hand. Fast and reliable file uploading is something that might help to save lives in such cases and, with the help of tus, our system can provide that. A more reliable means of transferring information, even under very poor networking circumstances, means that those in charge of rescue operations are better equipped to make decisions at times when lives are at stake.</p>
+</blockquote>
+
+<p><strong>How did you find out about tus and what led you to implement the protocol in your system?</strong></p>
+
+<blockquote>
+  <p>We needed an effective solution for transferring large types of data, such as high-resolution photos and long videos. Our system was intended to operate on a GSM network, often outside the cities, in areas where coverage tends to be weak and intermittent. With that in mind, the solution should be able to upload files piece by piece and save the current upload state. We didn’t want to use FTP because it would be quite difficult to integrate with the REST API and also because partial transfer can be very unreliable. Our <a href="https://netbulls.io/">subcontractor</a>, who develops the mobile parts of the system, told us about tus.  While they themselves had not used it before, it quickly appeared after some more searching for possible solutions and various tests that tus met all of our expectations. The availability of libraries for the Android and .NET platforms was also crucially important for us. Furthermore, thanks to the tusd server and JavaScript client we had a great reference solution for the analysis of the protocol. As a result, we were able to prepare a new implementation of the tus server for PHP, and in parallel, work on the mobile application.</p>
+</blockquote>
+
+<p><strong>Did you encounter any challenges in implementing tus? If so, how did you overcome them?</strong></p>
+
+<blockquote>
+  <p>At that time, the biggest problem was the lack of documentation for version 1.0 of tus. The only available documentation concerned, from what I remember, version 0.2. Therefore, much of our work had to be based on tests and analysis of HTTP messages from the <a href="/demo.html">demo version</a>. That said, thanks to the availability of the tusd server, our subcontractor managed to complete all of their preparations before I’d finished my work. That was a great help. And when the <a href="/protocols/resumable-upload.html">tus protocol 1.0</a> was released, I was able to fix some remaining issues.</p>
+</blockquote>
+
+<p><strong>What benefits have the fire departments you work with experienced after tus was implemented?</strong></p>
+
+<blockquote>
+  <p>After several months of intensive testing of the system, we can say that the transfer of files has been very reliable - not a single damaged file has been reported! For that part, we owe a big thanks to tus. As a result, the fire departments that are currently testing this system have had a much more robust and reliable system of communication to their disposal – and something like that can certainly save lives in emergency situations.</p>
+</blockquote>
+
+<p>Thanks a lot to Jaroslaw for taking the time to answer our questions about this fascinating use case for tus! Our primary motivation behind the development of tus has been a desire to change the way the world does file uploading. So, with that in mind, you can imagine our excitement when we learned that the protocol was already being trusted with the communications of emergency services. To us, this really stands as a testament to its reliability.</p>
+
+<p>We hope that by sharing this story, more companies and developers might be tempted to give tus a try. After all, the more people that start using this protocol, the sooner truly reliable, resumable uploads can become a reality for all of us. If you’d like to know more about this specific use for tus, or about the protocol in general, feel free to <a href="https://twitter.com/tus_io">reach out</a>! And if you are also using tus for something interesting, we’d love to hear about that as well!</p>
+
+  </div>
+</div>
+
+<hr />
+
+<div class="post-subscribe">
+  <p>
+    Subscribe to, or respond on our social channels: <br />
+    <!-- could also be http://slack.tus.io but we can't have https and cloudflare enforces that now it seems: -->
+<a href="https://community.transloadit.com/c/tus" class="community-forum-button"><img src="/assets/img/community-forum-35a78b.svg" /></a>
+<script async defer src="https://slackin-xgybtegrsh.now.sh/slackin.js"></script>
+<a href="https://twitter.com/tus_io" class="twitter-follow-button" data-show-count="false" data-dnt="true">Follow @tus_io</a>
+<a href="/atom.xml"><img src="/assets/img/rss-feed-orange.svg" /></a>
+<iframe src="https://ghbtns.com/github-btn.html?user=tus&repo=tus-resumable-upload-protocol&type=watch&count=true" allowtransparency="true" frameborder="0" scrolling="0" width="100" height="20"></iframe>
+
+  </p>
+</div>
+
+
+        
+          </div>
+        
+      </div>
+
+      
+    </div>
+
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-3306079-17']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+
+    <script type="text/javascript">
+      window.tusdEndpoint = '';
+    </script>
+
+  </body>
+  <script async src="/assets/build/app.05d2f196ce928852a41f.js"></script>
+</html>

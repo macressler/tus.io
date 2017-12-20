@@ -1,0 +1,117 @@
+#!/usr/bin/env node
+var onTheGithubs = require('..');
+var cli          = require('cli').enable('status', 'help', 'version', 'timeout');
+
+cli.parse({
+  repo: ['r', 'Repositories (comma separated)', 'string'],
+  user: ['u', 'User / Organisation', 'string'],
+  format: ['f', 'Format', ['html', 'json'], 'html'],
+  input: ['i', 'Input', 'path'],
+  output: ['o', 'Output', 'path', '-'],
+  tag: ['t', 'Tag to replace in an existing html output file. E.g. {{community}}', 'string', ''],
+  concurrency: ['c', 'Concurrency. Higher than 1 may change order within user categories.', 'int', 1]
+});
+
+cli.main(function(args, options) {
+  if (!options.repo) {
+    this.fatal('Please specify a repository. Use -h for help. ');
+  }
+  if (!options.user) {
+    this.fatal('Please specify a user/organisation. Use -h for help. ');
+  }
+
+  var config = {
+    service: 'https://api.github.com',
+    paginate: true,
+    concurrency: 1,
+    squash: true,
+    descriptions: {
+      Contributors: 'People coding',
+      Collaborators: 'People commenting',
+      Watchers: 'People watching'
+    },
+    userpaths: {
+      Contributors: [
+        // '/orgs/{user}/members',
+        '/repos/{user}/{repo}/contributors',
+        // '/repos/{user}/{repo}/collaborators'
+      ],
+      Collaborators: [
+        '/repos/{user}/{repo}/issues/comments',
+        '/repos/{user}/{repo}/issues'
+      ],
+      Watchers: [
+        // '/repos/{user}/{repo}/subscribers',
+        '/repos/{user}/{repo}/stargazers'
+      ]
+    }
+  };
+
+  config.user        = options.user;
+  config.repo        = options.repo;
+  config.concurrency = options.concurrency;
+
+  var agg = onTheGithubs.aggregate(cli, config);
+  agg.execute(function (err, users) {
+    if (err) {
+      return cli.fatal(err);
+    }
+
+    // Format snippet
+    var bufSnippet = '';
+    if (options.format === 'json') {
+      bufSnippet = JSON.stringify(users);
+    } else if (options.format === 'html') {
+      for (var type in users) {
+        bufSnippet += '<div class="in-the-githubs">' + "\n";
+        if (users[type].length) {
+          bufSnippet += "  " + '<h2>' + type + ' (' + users[type].length + ')</h2>' + "\n";
+          if (config.descriptions && config.descriptions[type]) {
+            bufSnippet += "  " + '<p>' + config.descriptions[type] + '</p>' + "\n";
+          }
+          for (var i in users[type]) {
+            bufSnippet += "  " + '<a target="_blank" rel="tooltip" data-placement="bottom" title="' + users[type][i].login + '" href="' + users[type][i].html_url + '">';
+            bufSnippet += '<img src="' + users[type][i].avatar_url + '" />';
+            bufSnippet += '</a>' + "\n";
+          }
+        }
+        bufSnippet += '</div>' + "\n";
+      }
+    } else {
+      return cli.fatal('Unsupported format: ' + options.format);
+    }
+
+    if (!bufSnippet) {
+      return cli.fatal('No result');
+    }
+
+    // Optionally get input
+    var bufIn = '';
+    if (options.input === '-') {
+      options.input = '/dev/stdin';
+    }
+    if (options.input) {
+      bufIn = cli.native.fs.readFileSync(options.input).toString();
+    }
+
+    // Place snippet in input
+    var bufOut = '';
+    if (options.tag) {
+      if (bufIn.indexOf(options.tag) === -1) {
+        return cli.fatal('Tag \'' + options.tag + '\' not found in input file');
+      }
+      bufOut = bufIn.replace(options.tag, bufSnippet);
+    } else {
+      bufOut = bufIn + bufSnippet;
+    }
+
+    // Output
+    if (options.output === '-') {
+      // /dev/stdout throws a `return binding.write(fd, buffer, offset, length, position);` on node v0.8.15
+      cli.output(bufOut);
+    } else {
+      cli.debug('Writing to ' + options.output);
+      cli.native.fs.writeFileSync(options.output, bufOut);
+    }
+  });
+});

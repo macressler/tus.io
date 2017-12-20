@@ -1,0 +1,248 @@
+.intro {
+	background: #fff;
+	color: @intro-color;
+	font-weight: 300;
+	position: relative;
+	text-align: center;
+
+	h1 {
+		margin: 0;
+	}
+
+	a {
+		color: @intro-color;
+	}
+
+	.brand {
+		h2 {
+			border: 0 !important;
+			font-size: 100px;
+			font-weight: 700;
+			margin: 50px 0 !important;
+		}
+	}
+
+	/* stylelint-disable */
+	.banner {
+		&:extend(.animated);
+		&:extend(.fadeIn);
+		animation-delay: 0.5s;
+		padding: 40px 0;
+		width: 60%;
+	}
+	/* stylelint-enable */
+
+	.mission {
+		background: @mission-bg;
+		border-bottom: 1px solid #ddd;
+		border-top: 1px solid #ddd;
+		color: @mission-color;
+		padding: 50px 0 20px 0;
+		text-align: justify;
+
+		a {
+			color: @mission-color;
+		}
+	}
+}
+
+
+.feature {
+	h5 {
+		text-align: center;
+		margin-top: 1.5em;
+		border-bottom: 1px solid #eee;
+	}
+
+	div {
+		text-align: justify;
+	}
+}
+
+.implementation {
+	img {
+		display: block;
+		margin: auto;
+		margin-bottom: 15px;
+		width: 30%;
+	}
+
+	text-align: center;
+}
+
+.implementations-link {
+	padding-top: 30px;
+	text-align: center;
+}
+
+.posts {
+	list-style: none;
+
+	li {
+		border-bottom: 1px solid #eee;
+		margin-bottom: 15px;
+		padding-bottom: 15px;
+
+		.author {
+			color: #ccc;
+			float: left;
+			height: 55px;
+			margin-right: 25px;
+			margin-top: 5px;
+			width: 55px;
+
+			img {
+				border: 2px solid #fff;
+				border-radius: 50%;
+				box-shadow: 0 0 6px #ccc;
+				width: 100%;
+			}
+		}
+
+		.post-title {
+			.date {
+				color: #ccc;
+			}
+
+			h3 {
+				margin: 0;
+
+				a {
+					text-decoration: none;
+				}
+			}
+		}
+
+		&:last-child {
+			border-bottom: none;
+		}
+	}
+}
+
+.logos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: row wrap;
+}
+
+.logos img {
+  flex: 1 1 auto;
+  padding: 22px;
+	max-width: 200px;
+  max-height: 70px;
+}
+
+.on-the-githubs {
+	list-style-type: none;
+	margin: 0 0 0 5px;
+	padding: 0;
+
+	img {
+		float: left;
+		margin: 0;
+	}
+
+	p {
+		display: inline-block;
+		float: left;
+		margin: 0;
+		max-width: 550px;
+		max-height: 50px;
+		overflow: hidden;		
+	}
+
+	span.timeago {
+		float: left;
+		position: absolute;
+		right: 0;
+		text-align: right;
+		width: 90px;
+	}
+
+	li {
+		border-bottom: 1px solid #eee;
+		clear: both;
+		margin: 0;
+		padding: 5px 0;
+		position: relative;
+
+		&:last-child {
+			border-bottom: none;
+		}
+
+		&:hover .commits {
+			display: block;
+		}
+
+		abbr {
+			float: right;
+		}
+	}
+
+	.gravatar {
+		border-radius: 10px;
+		height: 20px;
+		margin-right: 7px;
+		width: 20px;
+	}
+
+	.commits {
+		clear: both;
+		display: none;
+		padding-top: 5px;
+
+		li {
+			font-size: 12px;
+			list-style-type: none;
+			margin-left: 10px;
+
+			a {
+				display: inline-block;
+				margin-right: 3px;
+				text-align: right;
+				width: 50px;
+			}
+		}
+	}
+
+	abbr[title] {
+		border: none;
+	}
+}
+
+.subscription-form {
+	background: #eee;
+	border-top: 1px solid #ddd;
+	margin-top: 20px;
+	padding-top: 20px;
+
+	form {
+		position: relative;
+		text-align: right;
+
+		input[type="email"] {
+			border-bottom-right-radius: 0;
+			border-top-right-radius: 0;
+			min-width: 250px;
+			position: relative;
+			text-align: left;
+			z-index: 100;
+
+			&:focus {
+				border-color: darken(@scheme-tertiary, 1%);
+			}
+		}
+
+		button {
+			background: @scheme-tertiary;
+			border-color: @scheme-tertiary;
+			margin-left: -7px;
+
+			&:hover {
+				background: darken(@scheme-tertiary, 1%);
+				border-color: darken(@scheme-tertiary, 1%);
+			}
+		}
+	}
+}
